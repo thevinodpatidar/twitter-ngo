@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="columns is-multiline is-mobile">
+        <div class="column is-half">
+            <form action="" method="post">
+                <h1 class="title is-1">Payment</h1>
+                <div class="field">
+                    <label class="label">Donate to NGO</label>
+                    <p class="help">Enter NGO Name</p>
+                    <div class="control">
+                            <input class="input" type="text" placeholder="Udan Foundation">
+                        </div>
+                        <p class="help">Enter NGO ID</p>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="19001">
+                    </div>
+                 
+                </div>
+                <div class="field has-addons">
+                    <p class="control">
+                        <span class="select">
+                            <select>
+                                <option>$</option>
+                                <option>£</option>
+                                <option>€</option>
+                            </select>
+                        </span>
+                    </p>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Amount of money">
+                    </p>
+                </div>
+                <div>
+                    <h1 class="title is-3">Billing Address</h1>
+                
+                <p class="control">
+                    <label class="label">Address</label>
+                    <input class="input" type="text" placeholder="24,Bengali Square">
+                </p>
+                <p class="control">
+                        <label class="label">City</label>
+                    <input class="input" type="text" placeholder="Indore">
+                </p>
+                <p class="control">
+                        <label class="label">State</label>
+                    <input class="input" type="text" placeholder="Madhya Pradesh">
+                </p>
+                <br>
+            </div>
+                <button type="submit" class="button is-dark">Donate Now</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+{% for follow_user in User %}
+<div class="columns is-centered" style="margin-top: 2px; margin-bottom: 2px;">
+    <div class="column is-one-third">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="{{ url_for('static', filename='profile_pics/' + follow_user.image_file) }}"
+                        alt="{{ follow_user.username }}" width="60">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <!-- <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="{{ url_for('static', filename='profile_pics/' + follow_user.image_file) }}"
+                                alt="{{ follow_user.username }}" class="profile" width="60">
+                        </figure>
+                    </div> -->
+                    <div class="media-content">
+                        <p class="title is-4">{{ follow_user.username }}</p>
+                        <p class="subtitle is-6">@{{ follow_user.username }}</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                   {{ follow_user.ngo_info }}
+                    <a href="#">#heathly</a> <a href="#">#udan</a>
+                    <br>
+                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

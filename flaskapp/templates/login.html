@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="columns">
+    <div class="column is-half">
+        <h1 class="title is-1">Login</h1>
+        <form action="" method="POST" style="width: 100%;">
+            <div class="control" style="margin-bottom: 1.5rem;">
+                <label for="email">Email</label>
+                <input type="text" name="email" class="input" value="{{request.form.email}}">
+            </div>
+            <div class="control" style="margin-bottom: 1.5rem;">
+                <label for="role">Role - (NGO & User)</label>
+                <input type="text" name="role" class="input" value="{{request.form.role}}">
+            </div>
+            <div class="control" style="margin-bottom: 1.5rem;">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="input" value="{{request.form.password}}">
+            </div>
+            <button type="submit" class="button is-info">Submit</button>
+        </form>
+    </div>
+    <div class=" column">
+        <img  src="{{ url_for('static', filename='graphics/' + 'Unite-logo-1.png') }}" alt="">
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1 class="title is-3">Profile</h1>
+<h2 class="subtitle is-4">Welcome {{session.username}}</h2>
+
+<img src="{{ profile_pic }}" alt="Profile Picture" style="width: 100px; height: 100px;" class="profile">
+
+<a href="{{ url_for('update_photo') }}" class="button is-success is-rounded" style="width: 40px; height: 40px;">
+    <i class="fas fa-user-edit"></i>
+</a>
+
+<a href="
+    {{ url_for('new_post') }}" class=" button is-info is-rounded">New Post</a>
+<hr>
+<div class="container">
+    <div class="columns">
+        <div class="column">
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                  <div>
+                    {% set user_posts = Post_model.query.filter_by(user_id=user.id).all() %}
+                    <p class="heading">Tweets</p>
+                    <p class="title">{{ user_posts|length}}</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered">
+                  <div>
+                        {% set user_following = [] %}
+                        {% for user_query in User.query.all() %}
+                        {% for user_query_followers in user_query.followers.all() %}
+                        {% if user_query_followers == user %}
+                        {% set user_following = user_following.append(user) %}
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                    <p class="heading">Following</p>
+                    <p class="title">{{user_following|length}}</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered">
+                  <div>
+                    {% set user_followers = user.followers.all() %}
+                    <p class="heading">Followers</p>
+                    <p class="title">{{ user_followers|length}}</p>
+                  </div>
+                </div>
+                <!-- <div class="level-item has-text-centered">
+                  <div>
+                    {% set user_posts = Post_model.query.filter_by(user_id=user.id).all() %}
+                    <p class="heading">Likes</p>
+                    <p class="title">789</p>
+                  </div>
+                </div> -->
+              </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
