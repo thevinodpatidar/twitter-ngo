@@ -15,13 +15,13 @@
                     </div>
                     <div class="column">
                         <a href="{{ url_for('profile') }}">
-                            <h5 class="title is-5 has-text-info">@{{ user.username }}&nbsp;
+                            <h5 class="title is-5 has-text-info">{{ user.username }}&nbsp;
                                 {% if user.verified %}
                                 <i class="fas fa-check-circle"></i>
                                 {% endif %}
                             </h5>
                         </a>
-                        <h6 class="subtitle is-6" style="margin-bottom: 1rem; font-size: 80%;">{{ user.email }}</h6>
+                        <h6 class="subtitle is-6" style="margin-bottom: 1rem; font-size: 80%;">@{{ user.username }}</h6>
 
 
                         <div class="level">

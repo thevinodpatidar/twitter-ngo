@@ -207,7 +207,7 @@ class AdminRegisterForm(Form):
 # NGO Register
 @app.route('/ngo_register', methods=['GET', 'POST'])
 def ngo_register():
-    ngoid = [19001,19002,19003,19004,19005,19006,19007,19008,19009,19010]
+    ngoid = [19001,19002,19003,19004,19005,19006,19007,19008,19009,19010,19011,19012,19013,19014,19015,19016]
     form = AdminRegisterForm(request.form)
     if request.method == 'POST' and form.validate():
 
@@ -385,9 +385,19 @@ def new_post():
     if request.method == 'POST' and form.validate():
         # Get form content
         content = form.content.data
-        file = request.files['post_pic']
+
         # Make post object
         post = Post(content=content, author=current_user())
+
+        if 'post_pic' not in request.files:
+            db.session.add(post)
+            db.session.commit()
+            
+            flash('Your new post has been created!', 'success')
+            return redirect(url_for('home',user=current_user(),Post_model=Post))
+
+        file = request.files['post_pic']
+
     
         if file and allowed_file(file.filename):
 
@@ -396,7 +406,7 @@ def new_post():
             post.post_img = filename
 
             file.save(os.path.join(app.config['UPLOAD_POST_PIC'], filename))
-        
+
         # Add post to db session
         db.session.add(post)
 
