@@ -18,8 +18,12 @@
                             class="has-text-weight-semibold">&nbsp;&nbsp;{{post.date_posted.strftime('%B %d, %Y')}}</small>
                         <br>
                         <p style="margin-bottom: .8rem;">{{post.content}}</p>
+                        {% if post.post_img == None %}
+                        <img src="{{ post.post_img }}" alt="">
+                        {% else %}
                         {% set post_pic = url_for('static', filename='post_img/' + post.post_img ) %}
                         <img src="{{ post_pic }}" >
+                        {% endif %}
                         <!-- retweet logic -->
                         {% if post.retweet != None  %}
                         {% set retweet = Post_model.query.filter_by(id=post.retweet).first() %}
