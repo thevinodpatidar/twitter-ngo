@@ -521,7 +521,7 @@ def search_ngo():
         user = User.query.filter(
             User.username.like('%' +query +  '%'))
         ngo = Ngo.query.filter(
-            User.username.like('%' +query +  '%'))
+            Ngo.ngo_name.like('%' +query +  '%'))
 
         return render_template('follower.html',Post_model=Post, user=current_user(),follow_suggestions=follow_suggestions, query=query,User=user,ngo=ngo)
 
@@ -538,7 +538,7 @@ def follow(id):
 
     if user_following == user_followed:
 
-        flash('You cant follow yourself -_-', 'danger')
+        flash("You can't follow yourself -_-", 'danger')
         return redirect(url_for('home'))
 
     else:
@@ -597,13 +597,14 @@ def retweet(id):
 
         flash('Unretweeted successfully', 'warning')
         return redirect(url_for('home'))
-    if file and allowed_file(file.filename):
 
-        filename = secure_filename(file.filename)
+    # if file and allowed_file(file.filename):
 
-        post.post_img = filename
+    #     filename = secure_filename(file.filename)
 
-        file.save(os.path.join(app.config['UPLOAD_POST_PIC'], filename))
+    #     post.post_img = filename
+
+    #     file.save(os.path.join(app.config['UPLOAD_POST_PIC'], filename))
 
  
     db.session.add(post)
