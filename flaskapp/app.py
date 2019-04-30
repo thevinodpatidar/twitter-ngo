@@ -220,9 +220,6 @@ def ngo_register():
         file = request.files['file']
 
         # Get NGO ID 
-        
-        print(type(int(ngo_reg_id)))
-        # Get NGO ID 
         ngo_id = False
 
         for i in ngoid:
