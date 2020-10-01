@@ -15,5 +15,3 @@ A beginner project using the following stack:
 * Bulma CSS framework
 
 <br/>
-
-![image](screenshot.png)
